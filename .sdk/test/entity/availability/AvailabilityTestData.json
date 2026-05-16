@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "availability": {
+      "AVAILABILITY00": {
+        "archived_snapshot": {},
+        "url": "s15"
+      },
+      "AVAILABILITY01": {
+        "archived_snapshot": {},
+        "url": "s29"
+      },
+      "AVAILABILITY02": {
+        "archived_snapshot": {},
+        "url": "s3d"
+      }
+    }
+  },
+  "new": {
+    "availability": {
+      "availability_ref01": {
+        "archived_snapshot": {},
+        "url": "s51"
+      }
+    }
+  }
+}

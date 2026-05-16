@@ -1,0 +1,78 @@
+# Entity: availability
+
+main: kit: entity: availability: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "archived_snapshot"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "url"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "availability"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: "myCallback"
+                kind: "query"
+                name: "callback"
+                orig: "callback"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "20150101"
+                kind: "query"
+                name: "timestamp"
+                orig: "timestamp"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "https://example.com"
+                kind: "query"
+                name: "url"
+                orig: "url"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/wayback/available"
+          parts: [
+            "wayback"
+            "available"
+          ]
+          select: {
+            exist: [
+              "callback"
+              "timestamp"
+              "url"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

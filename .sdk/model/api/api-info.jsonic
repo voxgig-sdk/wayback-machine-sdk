@@ -1,0 +1,25 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        name: "Internet Archive"
+        url: "https://archive.org/help/wayback_api.php"
+      }
+      description: "The Wayback Machine API enables developers to check if a specific URL has been archived and is accessible in the Wayback Machine. It provides a simple interface to retrieve information about archived snapshots of web pages, including the ability to specify timestamps for historical captures."
+      servers: [
+        {
+          description: "Internet Archive production server"
+          url: "https://archive.org"
+        }
+      ]
+      termsOfService: "https://archive.org/about/terms.php"
+      title: "Wayback Machine API"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

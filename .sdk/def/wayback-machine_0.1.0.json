@@ -1,0 +1,181 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Wayback Machine API",
+    "description": "The Wayback Machine API enables developers to check if a specific URL has been archived and is accessible in the Wayback Machine. It provides a simple interface to retrieve information about archived snapshots of web pages, including the ability to specify timestamps for historical captures.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Internet Archive",
+      "url": "https://archive.org/help/wayback_api.php"
+    },
+    "termsOfService": "https://archive.org/about/terms.php"
+  },
+  "servers": [
+    {
+      "url": "https://archive.org",
+      "description": "Internet Archive production server"
+    }
+  ],
+  "paths": {
+    "/wayback/available": {
+      "get": {
+        "summary": "Check URL availability in Wayback Machine",
+        "description": "Retrieves information about archived snapshots of a specific URL. Returns the closest available snapshot to the requested timestamp, or the most recent snapshot if no timestamp is specified.",
+        "operationId": "getAvailableSnapshot",
+        "tags": [
+          "Availability"
+        ],
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "description": "The URL to check for archived snapshots",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uri",
+              "example": "https://example.com"
+            }
+          },
+          {
+            "name": "timestamp",
+            "in": "query",
+            "description": "Timestamp in the format YYYYMMDDhhmmss to find the closest archived snapshot. If not specified, returns the most recent snapshot.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "pattern": "^[0-9]{4,14}$",
+              "example": "20150101"
+            }
+          },
+          {
+            "name": "callback",
+            "in": "query",
+            "description": "Optional JSONP callback function name",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "myCallback"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with snapshot availability information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "url": {
+                      "type": "string",
+                      "description": "The requested URL",
+                      "example": "https://example.com"
+                    },
+                    "archived_snapshots": {
+                      "type": "object",
+                      "properties": {
+                        "closest": {
+                          "type": "object",
+                          "properties": {
+                            "status": {
+                              "type": "string",
+                              "description": "HTTP status code of the archived snapshot",
+                              "example": "200"
+                            },
+                            "available": {
+                              "type": "boolean",
+                              "description": "Indicates whether an archived snapshot is available",
+                              "example": true
+                            },
+                            "url": {
+                              "type": "string",
+                              "description": "URL to access the archived snapshot in the Wayback Machine",
+                              "example": "http://web.archive.org/web/20150101000000/https://example.com"
+                            },
+                            "timestamp": {
+                              "type": "string",
+                              "description": "Timestamp of the archived snapshot in YYYYMMDDhhmmss format",
+                              "example": "20150101000000"
+                            }
+                          },
+                          "description": "Information about the closest available snapshot"
+                        }
+                      },
+                      "description": "Container for archived snapshot information"
+                    }
+                  }
+                },
+                "examples": {
+                  "availableSnapshot": {
+                    "summary": "Available snapshot found",
+                    "value": {
+                      "url": "https://example.com",
+                      "archived_snapshots": {
+                        "closest": {
+                          "status": "200",
+                          "available": true,
+                          "url": "http://web.archive.org/web/20150101000000/https://example.com",
+                          "timestamp": "20150101000000"
+                        }
+                      }
+                    }
+                  },
+                  "noSnapshot": {
+                    "summary": "No snapshot available",
+                    "value": {
+                      "url": "https://example.com",
+                      "archived_snapshots": {}
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - invalid parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Invalid URL parameter"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service temporarily unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Service temporarily unavailable"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Availability",
+      "description": "Operations for checking URL availability in the Wayback Machine"
+    }
+  ],
+  "externalDocs": {
+    "description": "Official Wayback Machine API Documentation",
+    "url": "https://archive.org/help/wayback_api.php"
+  }
+}
