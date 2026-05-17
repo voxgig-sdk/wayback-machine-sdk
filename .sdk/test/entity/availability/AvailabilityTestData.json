@@ -3,15 +3,18 @@
     "availability": {
       "AVAILABILITY00": {
         "archived_snapshot": {},
-        "url": "s15"
+        "url": "s15",
+        "id": "AVAILABILITY00"
       },
       "AVAILABILITY01": {
         "archived_snapshot": {},
-        "url": "s29"
+        "url": "s29",
+        "id": "AVAILABILITY01"
       },
       "AVAILABILITY02": {
         "archived_snapshot": {},
-        "url": "s3d"
+        "url": "s3d",
+        "id": "AVAILABILITY02"
       }
     }
   },

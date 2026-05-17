@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/wayback-machine-sdk/core"
+	"github.com/voxgig-sdk/wayback-machine-sdk/go/core"
 )
 
 type BaseFeature struct {

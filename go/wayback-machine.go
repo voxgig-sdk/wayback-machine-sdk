@@ -1,10 +1,10 @@
 package voxgigwaybackmachinesdk
 
 import (
-	"github.com/voxgig-sdk/wayback-machine-sdk/core"
-	"github.com/voxgig-sdk/wayback-machine-sdk/entity"
-	"github.com/voxgig-sdk/wayback-machine-sdk/feature"
-	_ "github.com/voxgig-sdk/wayback-machine-sdk/utility"
+	"github.com/voxgig-sdk/wayback-machine-sdk/go/core"
+	"github.com/voxgig-sdk/wayback-machine-sdk/go/entity"
+	"github.com/voxgig-sdk/wayback-machine-sdk/go/feature"
+	_ "github.com/voxgig-sdk/wayback-machine-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

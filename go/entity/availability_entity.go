@@ -1,9 +1,9 @@
 package entity
 
 import (
-	"github.com/voxgig-sdk/wayback-machine-sdk/core"
+	"github.com/voxgig-sdk/wayback-machine-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/wayback-machine-sdk/go/utility/struct"
 )
 
 type AvailabilityEntity struct {

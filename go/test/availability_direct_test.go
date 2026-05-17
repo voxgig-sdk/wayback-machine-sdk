@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/wayback-machine-sdk"
-	"github.com/voxgig-sdk/wayback-machine-sdk/core"
+	sdk "github.com/voxgig-sdk/wayback-machine-sdk/go"
+	"github.com/voxgig-sdk/wayback-machine-sdk/go/core"
 )
 
 func TestAvailabilityDirect(t *testing.T) {

@@ -3,7 +3,7 @@ package sdktest
 import (
 	"testing"
 
-	sdk "github.com/voxgig-sdk/wayback-machine-sdk"
+	sdk "github.com/voxgig-sdk/wayback-machine-sdk/go"
 )
 
 func TestCustomUtility(t *testing.T) {

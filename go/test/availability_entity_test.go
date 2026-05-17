@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/wayback-machine-sdk"
-	"github.com/voxgig-sdk/wayback-machine-sdk/core"
+	sdk "github.com/voxgig-sdk/wayback-machine-sdk/go"
+	"github.com/voxgig-sdk/wayback-machine-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/wayback-machine-sdk/go/utility/struct"
 )
 
 func TestAvailabilityEntity(t *testing.T) {
