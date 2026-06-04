@@ -105,14 +105,12 @@ func availabilityDirectSetup(mockres any) *availabilityDirectSetupResult {
 	env := envOverride(map[string]any{
 		"WAYBACKMACHINE_TEST_AVAILABILITY_ENTID": map[string]any{},
 		"WAYBACKMACHINE_TEST_LIVE":    "FALSE",
-		"WAYBACKMACHINE_APIKEY":       "NONE",
 	})
 
 	live := env["WAYBACKMACHINE_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["WAYBACKMACHINE_APIKEY"],
 		}
 		client := sdk.NewWaybackMachineSDK(mergedOpts)
 

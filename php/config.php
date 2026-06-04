@@ -20,9 +20,6 @@ class WaybackMachineConfig
             ],
             "options" => [
                 "base" => "https://archive.org",
-                "auth" => [
-                    "prefix" => "Bearer",
-                ],
                 "headers" => [
           'content-type' => 'application/json',
         ],

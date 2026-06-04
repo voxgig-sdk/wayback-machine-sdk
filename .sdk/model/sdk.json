@@ -18,7 +18,17 @@
         ],
         "termsOfService": "https://archive.org/about/terms.php",
         "title": "Wayback Machine API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "tagline": "Check whether a URL has been archived in the Internet Archive's Wayback Machine and look up snapshots near a given timestamp",
+        "homepage": "https://archive.org/web/",
+        "docs_url": "https://archive.org/help/wayback_api.php",
+        "license_short": "Public API operated by the Internet Archive; archived content remains subject to original copyright and the Internet Archive's terms of use.",
+        "license_md": "- Operated by the [Internet Archive](https://archive.org/), a US 501(c)(3) non-profit.\n- The API itself is openly accessible without authentication; the documentation describes it as a test endpoint that may change.\n- Snapshot content delivered through the Wayback Machine is the original web material captured at crawl time and remains subject to the originating site's copyright.\n- Usage is governed by the Internet Archive's [Terms of Use](https://archive.org/about/terms.php).",
+        "about_md": "The Wayback Machine Availability API is a small JSON endpoint published by the [Internet Archive](https://archive.org/) that tells you whether a given URL has been captured by the [Wayback Machine](https://web.archive.org/) and, if so, links to the closest snapshot.\n\nWhat you get from the API:\n\n- A boolean `available` flag indicating whether any snapshot exists for the requested URL.\n- The `url` of the closest archived capture on `web.archive.org`.\n- The capture `timestamp` in `YYYYMMDDhhmmss` form.\n- The original HTTP `status` code recorded when the page was archived.\n\nThe endpoint accepts a required `url` parameter and an optional `timestamp` (1-14 digits, `YYYYMMDDhhmmss`) to find the snapshot closest to a specific point in time. A `callback` parameter is supported for JSONP. When nothing has been archived the response is simply `{\"archived_snapshots\":{}}`.\n\nThe service is unauthenticated and CORS-enabled, making it usable directly from browser code. The Internet Archive documents this as a test API that may change; no formal rate limits are published, so polite use is expected.",
+        "entity_desc": {
+          "availability": "Lookup of whether a given URL has an archived snapshot in the Wayback Machine, returning the closest capture's URL, timestamp, and original HTTP status via `GET /wayback/available`."
+        },
+        "auth": false
       },
       "config": {
         "auth": {
@@ -26,7 +36,15 @@
         },
         "headers": {
           "content-type": "application/json"
-        }
+        },
+        "docs_order": [
+          "ts",
+          "py",
+          "php",
+          "go",
+          "rb",
+          "lua"
+        ]
       },
       "entity": {
         "availability": {

@@ -73,14 +73,12 @@ function availability_direct_setup($mockres)
     $env = Runner::env_override([
         "WAYBACKMACHINE_TEST_AVAILABILITY_ENTID" => [],
         "WAYBACKMACHINE_TEST_LIVE" => "FALSE",
-        "WAYBACKMACHINE_APIKEY" => "NONE",
     ]);
 
     $live = $env["WAYBACKMACHINE_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
-            "apikey" => $env["WAYBACKMACHINE_APIKEY"],
         ];
         $client = new WaybackMachineSDK($merged_opts);
         return [

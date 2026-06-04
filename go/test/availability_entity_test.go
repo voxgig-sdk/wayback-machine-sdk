@@ -117,7 +117,6 @@ func availabilityBasicSetup(extra map[string]any) *entityTestSetup {
 		"WAYBACKMACHINE_TEST_AVAILABILITY_ENTID": idmap,
 		"WAYBACKMACHINE_TEST_LIVE":      "FALSE",
 		"WAYBACKMACHINE_TEST_EXPLAIN":   "FALSE",
-		"WAYBACKMACHINE_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["WAYBACKMACHINE_TEST_AVAILABILITY_ENTID"])
@@ -128,7 +127,6 @@ func availabilityBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["WAYBACKMACHINE_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["WAYBACKMACHINE_APIKEY"],
 			},
 			extra,
 		})

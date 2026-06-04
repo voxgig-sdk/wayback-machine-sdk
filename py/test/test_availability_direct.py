@@ -64,14 +64,12 @@ def _availability_direct_setup(mockres):
     env = runner.env_override({
         "WAYBACKMACHINE_TEST_AVAILABILITY_ENTID": {},
         "WAYBACKMACHINE_TEST_LIVE": "FALSE",
-        "WAYBACKMACHINE_APIKEY": "NONE",
     })
 
     live = env.get("WAYBACKMACHINE_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("WAYBACKMACHINE_APIKEY"),
         }
         client = WaybackMachineSDK(merged_opts)
         return {
