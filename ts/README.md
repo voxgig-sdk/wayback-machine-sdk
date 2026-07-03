@@ -10,7 +10,7 @@ The TypeScript SDK for the WaybackMachine API — a type-safe, entity-oriented c
 
 ## Install
 ```bash
-npm install wayback-machine
+npm install @voxgig-sdk/wayback-machine
 ```
 ## Tutorial: your first API call
 

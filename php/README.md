@@ -10,7 +10,7 @@ The PHP SDK for the WaybackMachine API — an entity-oriented client using PHP c
 
 ## Install
 ```bash
-composer require voxgig/wayback-machine-sdk
+composer require voxgig-sdk/wayback-machine
 ```
 
 

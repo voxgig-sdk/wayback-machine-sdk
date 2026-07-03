@@ -10,13 +10,13 @@ The Ruby SDK for the WaybackMachine API — an entity-oriented client using idio
 
 ## Install
 ```bash
-gem install wayback-machine-sdk
+gem install voxgig-sdk-wayback-machine
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "wayback-machine-sdk"
+gem "voxgig-sdk-wayback-machine"
 ```
 
 Then run:

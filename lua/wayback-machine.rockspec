@@ -8,12 +8,14 @@ source = {
   dir = "wayback-machine-sdk/lua"
 }
 description = {
-  summary = "WaybackMachine SDK for Lua",
-  license = "MIT"
+  summary = "Unofficial generated Lua SDK for the Wayback Machine public API. Not affiliated with or endorsed by the upstream API provider.",
+  homepage = "https://github.com/voxgig-sdk/wayback-machine-sdk",
+  issues_url = "https://github.com/voxgig-sdk/wayback-machine-sdk/issues",
+  license = "MIT",
+  labels = { "voxgig", "sdk", "generated-sdk", "openapi", "api-client", "wayback-machine" }
 }
 dependencies = {
   "lua >= 5.3",
-  "dkjson >= 2.5",
   "dkjson >= 2.5",
 }
 build = {

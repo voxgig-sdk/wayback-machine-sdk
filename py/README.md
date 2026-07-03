@@ -10,7 +10,7 @@ The Python SDK for the WaybackMachine API — an entity-oriented client followin
 
 ## Install
 ```bash
-pip install wayback-machine-sdk
+pip install voxgig-sdk-wayback-machine
 ```
 
 Or install from source:

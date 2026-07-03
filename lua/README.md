@@ -10,7 +10,7 @@ The Lua SDK for the WaybackMachine API — an entity-oriented client using Lua c
 
 ## Install
 ```bash
-luarocks install wayback-machine-sdk
+luarocks install voxgig-sdk-wayback-machine
 ```
 
 If the module is not yet published, add the source directory to
