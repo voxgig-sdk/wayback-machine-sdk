@@ -113,6 +113,7 @@ function basicSetup(extra?: any) {
     'WAYBACK_MACHINE_TEST_AVAILABILITY_ENTID': idmap,
     'WAYBACK_MACHINE_TEST_LIVE': 'FALSE',
     'WAYBACK_MACHINE_TEST_EXPLAIN': 'FALSE',
+    'WAYBACK_MACHINE_APIKEY': 'NONE',
   })
 
   idmap = env['WAYBACK_MACHINE_TEST_AVAILABILITY_ENTID']
@@ -122,6 +123,7 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new WaybackMachineSDK(merge([
       {
+        apikey: env.WAYBACK_MACHINE_APIKEY,
       },
       extra
     ]))

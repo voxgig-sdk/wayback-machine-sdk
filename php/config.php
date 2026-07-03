@@ -20,6 +20,9 @@ class WaybackMachineConfig
             ],
             "options" => [
                 "base" => "https://archive.org",
+                "auth" => [
+                    "prefix" => "Bearer",
+                ],
                 "headers" => [
           'content-type' => 'application/json',
         ],
@@ -31,54 +34,56 @@ class WaybackMachineConfig
         'availability' => [
           'fields' => [
             [
+              'active' => true,
               'name' => 'archived_snapshot',
               'req' => false,
               'type' => '`$OBJECT`',
-              'active' => true,
               'index$' => 0,
             ],
             [
+              'active' => true,
               'name' => 'url',
               'req' => false,
               'type' => '`$STRING`',
-              'active' => true,
               'index$' => 1,
             ],
           ],
           'name' => 'availability',
           'op' => [
             'load' => [
+              'input' => 'data',
               'name' => 'load',
               'points' => [
                 [
+                  'active' => true,
                   'args' => [
                     'query' => [
                       [
+                        'active' => true,
                         'example' => 'myCallback',
                         'kind' => 'query',
                         'name' => 'callback',
                         'orig' => 'callback',
                         'reqd' => false,
                         'type' => '`$STRING`',
-                        'active' => true,
                       ],
                       [
+                        'active' => true,
                         'example' => '20150101',
                         'kind' => 'query',
                         'name' => 'timestamp',
                         'orig' => 'timestamp',
                         'reqd' => false,
                         'type' => '`$STRING`',
-                        'active' => true,
                       ],
                       [
+                        'active' => true,
                         'example' => 'https://example.com',
                         'kind' => 'query',
                         'name' => 'url',
                         'orig' => 'url',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'active' => true,
                       ],
                     ],
                   ],
@@ -99,11 +104,9 @@ class WaybackMachineConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'active' => true,
                   'index$' => 0,
                 ],
               ],
-              'input' => 'data',
               'key$' => 'load',
             ],
           ],

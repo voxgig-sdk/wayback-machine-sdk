@@ -91,6 +91,7 @@ def _availability_basic_setup(extra):
         "WAYBACKMACHINE_TEST_AVAILABILITY_ENTID": idmap,
         "WAYBACKMACHINE_TEST_LIVE": "FALSE",
         "WAYBACKMACHINE_TEST_EXPLAIN": "FALSE",
+        "WAYBACKMACHINE_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -101,6 +102,7 @@ def _availability_basic_setup(extra):
     if env.get("WAYBACKMACHINE_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
+                "apikey": env.get("WAYBACKMACHINE_APIKEY"),
             },
             extra or {},
         ])

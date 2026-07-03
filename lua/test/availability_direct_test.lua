@@ -68,12 +68,14 @@ function availability_direct_setup(mockres)
   local env = runner.env_override({
     ["WAYBACKMACHINE_TEST_AVAILABILITY_ENTID"] = {},
     ["WAYBACKMACHINE_TEST_LIVE"] = "FALSE",
+    ["WAYBACKMACHINE_APIKEY"] = "NONE",
   })
 
   local live = env["WAYBACKMACHINE_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
+      apikey = env["WAYBACKMACHINE_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

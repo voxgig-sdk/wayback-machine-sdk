@@ -78,12 +78,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'WAYBACKMACHINE_TEST_AVAILABILITY_ENTID': {},
     'WAYBACKMACHINE_TEST_LIVE': 'FALSE',
+    'WAYBACKMACHINE_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.WAYBACKMACHINE_TEST_LIVE
 
   if (live) {
     const client = new WaybackMachineSDK({
+      apikey: env.WAYBACKMACHINE_APIKEY,
     })
 
     let idmap: any = env['WAYBACKMACHINE_TEST_AVAILABILITY_ENTID']
