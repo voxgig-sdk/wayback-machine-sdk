@@ -49,8 +49,7 @@ class TestAvailabilityEntity:
         # LOAD
         availability_ref01_ent = client.Availability(None)
         availability_ref01_match_dt0 = {}
-        availability_ref01_data_dt0_loaded, err = availability_ref01_ent.load(availability_ref01_match_dt0, None)
-        assert err is None
+        availability_ref01_data_dt0_loaded = availability_ref01_ent.load(availability_ref01_match_dt0, None)
         assert availability_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _availability_basic_setup(extra):
         "WAYBACKMACHINE_TEST_AVAILABILITY_ENTID": idmap,
         "WAYBACKMACHINE_TEST_LIVE": "FALSE",
         "WAYBACKMACHINE_TEST_EXPLAIN": "FALSE",
-        "WAYBACKMACHINE_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _availability_basic_setup(extra):
     if env.get("WAYBACKMACHINE_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("WAYBACKMACHINE_APIKEY"),
             },
             extra or {},
         ])

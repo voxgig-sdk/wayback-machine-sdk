@@ -4,6 +4,7 @@
 main: {
   kit: {
     info: {
+      auth: false
       contact: {
         name: "Internet Archive"
         url: "https://archive.org/help/wayback_api.php"

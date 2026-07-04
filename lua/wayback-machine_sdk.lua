@@ -244,6 +244,19 @@ end
 
 
 
+-- Idiomatic facade: client:availability():list() / client:availability():load({ id = ... })
+function WaybackMachineSDK:availability(data)
+  local EntityMod = require("entity.availability_entity")
+  if data == nil then
+    if self._availability == nil then
+      self._availability = EntityMod.new(self, nil)
+    end
+    return self._availability
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:availability() instead.
 function WaybackMachineSDK:Availability(data)
   local EntityMod = require("entity.availability_entity")
   return EntityMod.new(self, data)

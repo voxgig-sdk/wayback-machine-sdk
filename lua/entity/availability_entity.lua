@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch AvailabilityLoadMatch
+---@param ctrl? table
+---@return Availability
+---@return string? err
 function AvailabilityEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

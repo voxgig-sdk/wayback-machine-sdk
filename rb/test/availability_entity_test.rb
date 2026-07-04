@@ -42,8 +42,7 @@ class AvailabilityEntityTest < Minitest::Test
     # LOAD
     availability_ref01_ent = client.Availability(nil)
     availability_ref01_match_dt0 = {}
-    availability_ref01_data_dt0_loaded, err = availability_ref01_ent.load(availability_ref01_match_dt0, nil)
-    assert_nil err
+    availability_ref01_data_dt0_loaded = availability_ref01_ent.load(availability_ref01_match_dt0, nil)
     assert !availability_ref01_data_dt0_loaded.nil?
 
   end
@@ -82,7 +81,6 @@ def availability_basic_setup(extra)
     "WAYBACKMACHINE_TEST_AVAILABILITY_ENTID" => idmap,
     "WAYBACKMACHINE_TEST_LIVE" => "FALSE",
     "WAYBACKMACHINE_TEST_EXPLAIN" => "FALSE",
-    "WAYBACKMACHINE_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +92,6 @@ def availability_basic_setup(extra)
   if env["WAYBACKMACHINE_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["WAYBACKMACHINE_APIKEY"],
       },
       extra || {},
     ])

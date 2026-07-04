@@ -245,6 +245,9 @@ func (sdk *WaybackMachineSDK) Direct(fetchargs map[string]any) (map[string]any, 
 }
 
 
+// Availability returns a Availability entity bound to this client.
+// Idiomatic usage: client.Availability(nil).List(nil, nil) or
+// client.Availability(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *WaybackMachineSDK) Availability(data map[string]any) WaybackMachineEntity {
 	return NewAvailabilityEntityFunc(sdk, data)
 }

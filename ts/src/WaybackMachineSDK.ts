@@ -2,6 +2,8 @@
 
 import { AvailabilityEntity } from './entity/AvailabilityEntity'
 
+export type * from './WaybackMachineTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -202,6 +204,14 @@ class WaybackMachineSDK {
 
 
 
+  _availability?: AvailabilityEntity
+
+  // Idiomatic facade: `client.availability.list()` / `client.availability.load({ id })`.
+  get availability(): AvailabilityEntity {
+    return (this._availability ??= new AvailabilityEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.availability` instead. */
   Availability(data?: any) {
     const self = this
     return new AvailabilityEntity(self,data)

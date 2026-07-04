@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Availability,
+  AvailabilityLoadMatch,
+} from '../WaybackMachineTypes'
 
 // TODO: needs Entity superclass
-class AvailabilityEntity extends WaybackMachineEntityBase {
+class AvailabilityEntity extends WaybackMachineEntityBase<Availability> {
 
   constructor(client: WaybackMachineSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class AvailabilityEntity extends WaybackMachineEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: AvailabilityLoadMatch, ctrl?: Control): Promise<Availability> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class AvailabilityEntity extends WaybackMachineEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Availability> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

@@ -45,6 +45,7 @@ class AvailabilityEntity
     end
   end
 
+  # @return [Availability, Hash] the current Availability data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class AvailabilityEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Availability fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Availability.
+  #
+  # @param reqmatch [AvailabilityLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Availability, Hash] the loaded Availability; raises WaybackMachineError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
