@@ -80,7 +80,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## AvailabilityEntity
 
 ```python
-availability = client.availability
+availability = client.Availability()
 ```
 
 ### Fields
@@ -97,7 +97,7 @@ availability = client.availability
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.availability.load({"id": "availability_id"})
+result = client.Availability().load({"id": "availability_id"})
 ```
 
 ### Common Methods

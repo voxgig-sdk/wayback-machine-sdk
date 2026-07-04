@@ -233,10 +233,10 @@ class WaybackMachineSDK
 
     private $_availability = null;
 
-    // Idiomatic facade: $client->availability()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Availability() (PHP method
-    // names are case-insensitive).
-    public function availability($data = null)
+    // Canonical facade: $client->Availability()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->availability()
+    // resolves here too.
+    public function Availability($data = null)
     {
         require_once __DIR__ . '/entity/availability_entity.php';
         if ($data === null) {

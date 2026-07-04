@@ -26,9 +26,9 @@ import { WaybackMachineSDK } from '@voxgig-sdk/wayback-machine'
 
 const client = new WaybackMachineSDK()
 
-// Load availability data
-const availability = await client.availability.load({})
-console.log(availability.data)
+// Load availability data (returns a Availability)
+const availability = await client.Availability().load()
+console.log(availability)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -84,8 +84,8 @@ from waybackmachine_sdk import WaybackMachineSDK
 client = WaybackMachineSDK()
 
 
-# Load a specific availability
-availability = client.availability.load({"id": "example_id"})
+# Load a specific availability (returns the record, raises on error)
+availability = client.Availability().load({"id": "example_id"})
 print(availability)
 ```
 
@@ -98,8 +98,8 @@ require_once 'waybackmachine_sdk.php';
 $client = new WaybackMachineSDK();
 
 
-// Load a specific availability
-$availability = $client->availability()->load(["id" => "example_id"]);
+// Load a specific availability (returns the bare record; throws on error)
+$availability = $client->Availability()->load(["id" => "example_id"]);
 print_r($availability);
 ```
 
@@ -123,8 +123,8 @@ require_relative "WaybackMachine_sdk"
 client = WaybackMachineSDK.new
 
 
-# Load a specific availability
-availability = client.availability.load({ "id" => "example_id" })
+# Load a specific availability (returns the bare record; raises on error)
+availability = client.Availability.load({ "id" => "example_id" })
 puts availability
 ```
 
@@ -137,7 +137,7 @@ local client = sdk.new()
 
 
 -- Load a specific availability
-local availability, err = client:availability():load({ id = "example_id" })
+local availability, err = client:Availability():load({ id = "example_id" })
 print(availability)
 ```
 
@@ -150,22 +150,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = WaybackMachineSDK.test()
-const result = await client.availability.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const availability = await client.Availability().load({ id: 'test01' })
+// availability is a bare Availability populated with mock data
+console.log(availability)
 ```
 
 ### Python
 
 ```python
 client = WaybackMachineSDK.test()
-result = client.availability.load({"id": "test01"})
+availability = client.Availability().load({"id": "test01"})
+print(availability)
 ```
 
 ### PHP
 
 ```php
-$client = WaybackMachineSDK::test();
-$result = $client->availability()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = WaybackMachineSDK::test([
+    "entity" => ["availability" => ["test01" => ["id" => "test01"]]],
+]);
+$availability = $client->Availability()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -180,15 +185,18 @@ result, err := client.Availability(nil).Load(
 ### Ruby
 
 ```ruby
-client = WaybackMachineSDK.test
-result = client.availability.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = WaybackMachineSDK.test({
+  "entity" => { "availability" => { "test01" => { "id" => "test01" } } },
+})
+availability = client.Availability.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:availability():load({ id = "test01" })
+local result, err = client:Availability():load({ id = "test01" })
 ```
 
 ## How it works
@@ -236,6 +244,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

@@ -32,8 +32,9 @@ client = WaybackMachineSDK.new
 
 ```ruby
 begin
-  result = client.availability.load({ "id" => "example_id" })
-  puts result
+  # load returns the bare Availability record (raises on error).
+  availability = client.Availability.load({ "id" => "example_id" })
+  puts availability
 rescue => err
   warn "load failed: #{err}"
 end
@@ -80,13 +81,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = WaybackMachineSDK.test
+client = WaybackMachineSDK.test({
+  "entity" => { "availability" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.availability.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+availability = client.Availability.load({ "id" => "test01" })
+puts availability
 ```
 
 ### Use a custom fetch function
@@ -162,7 +167,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> Hash` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> Hash` | Build and send an HTTP request. Returns a result hash (`result["ok"]`); does not raise. |
-| `Availability` | `(data) -> AvailabilityEntity` | Create a Availability entity instance. |
+| `Availability` | `(data) -> AvailabilityEntity` | Create an Availability entity instance. |
 
 ### Entity interface
 
@@ -219,7 +224,7 @@ API path: `/wayback/available`
 
 ### Availability
 
-Create an instance: `const availability = client.availability`
+Create an instance: `availability = client.Availability`
 
 #### Operations
 
@@ -236,8 +241,9 @@ Create an instance: `const availability = client.availability`
 
 #### Example: Load
 
-```ts
-const availability = await client.availability.load({ id: 'availability_id' })
+```ruby
+# load returns the bare Availability record (raises on error).
+availability = client.Availability.load({ "id" => "availability_id" })
 ```
 
 
@@ -312,7 +318,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-availability = client.availability
+availability = client.Availability
 availability.load({ "id" => "example_id" })
 
 # availability.data_get now returns the loaded availability data

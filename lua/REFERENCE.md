@@ -83,7 +83,7 @@ same parameters as `direct()`.
 ## AvailabilityEntity
 
 ```lua
-local availability = client:availability(nil)
+local availability = client:Availability(nil)
 ```
 
 ### Fields
@@ -100,7 +100,7 @@ local availability = client:availability(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:availability():load({ id = "availability_id" })
+local result, err = client:Availability():load({ id = "availability_id" })
 ```
 
 ### Common Methods

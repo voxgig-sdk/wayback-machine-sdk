@@ -33,9 +33,10 @@ $client = new WaybackMachineSDK();
 
 ```php
 try {
-    $result = $client->availability()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare Availability record (throws on error).
+    $availability = $client->Availability()->load(["id" => "example_id"]);
+    print_r($availability);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -81,13 +82,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = WaybackMachineSDK::test();
+$client = WaybackMachineSDK::test([
+    "entity" => ["availability" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->availability()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$availability = $client->Availability()->load(["id" => "test01"]);
+print_r($availability);
 ```
 
 ### Use a custom fetch function
@@ -166,7 +171,7 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `get_utility` | `(): Utility` | Copy of the SDK utility object. |
 | `prepare` | `(array $fetchargs): array` | Build an HTTP request definition without sending. |
 | `direct` | `(array $fetchargs): array` | Build and send an HTTP request. |
-| `Availability` | `($data): AvailabilityEntity` | Create a Availability entity instance. |
+| `Availability` | `($data): AvailabilityEntity` | Create an Availability entity instance. |
 
 ### Entity interface
 
@@ -224,7 +229,7 @@ API path: `/wayback/available`
 
 ### Availability
 
-Create an instance: `const availability = client.availability`
+Create an instance: `$availability = $client->Availability();`
 
 #### Operations
 
@@ -241,8 +246,9 @@ Create an instance: `const availability = client.availability`
 
 #### Example: Load
 
-```ts
-const availability = await client.availability.load({ id: 'availability_id' })
+```php
+// load() returns the bare Availability record (throws on error).
+$availability = $client->Availability()->load(["id" => "availability_id"]);
 ```
 
 
@@ -317,7 +323,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$availability = $client->availability();
+$availability = $client->Availability();
 $availability->load(["id" => "example_id"]);
 
 // $availability->dataGet() now returns the loaded availability data

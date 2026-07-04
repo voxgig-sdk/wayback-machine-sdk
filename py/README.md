@@ -33,10 +33,12 @@ client = WaybackMachineSDK()
 
 ### 3. Load an availability
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.availability.load({"id": "example_id"})
-    print(result)
+    availability = client.Availability().load({"id": "example_id"})
+    print(availability)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -84,8 +86,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = WaybackMachineSDK.test()
 
-result = client.availability.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+availability = client.Availability().load({"id": "test01"})
+# availability contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -161,7 +164,7 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> dict` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> dict` | Build and send an HTTP request. Returns a result dict (branch on `ok`). |
-| `Availability` | `(data) -> AvailabilityEntity` | Create a Availability entity instance. |
+| `Availability` | `(data) -> AvailabilityEntity` | Create an Availability entity instance. |
 
 ### Entity interface
 
@@ -219,7 +222,7 @@ API path: `/wayback/available`
 
 ### Availability
 
-Create an instance: `const availability = client.availability`
+Create an instance: `availability = client.Availability()`
 
 #### Operations
 
@@ -236,8 +239,8 @@ Create an instance: `const availability = client.availability`
 
 #### Example: Load
 
-```ts
-const availability = await client.availability.load({ id: 'availability_id' })
+```python
+availability = client.Availability().load({"id": "availability_id"})
 ```
 
 
@@ -311,7 +314,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-availability = client.availability
+availability = client.Availability()
 availability.load({"id": "example_id"})
 
 # availability.data_get() now returns the loaded availability data

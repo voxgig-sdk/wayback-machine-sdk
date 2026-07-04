@@ -109,7 +109,7 @@ Alias for `WaybackMachineSDK.test()`.
 ## AvailabilityEntity
 
 ```ts
-const availability = client.availability
+const availability = client.Availability()
 ```
 
 ### Fields
@@ -126,7 +126,7 @@ const availability = client.availability
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.availability.load({ id: 'availability_id' })
+const result = await client.Availability().load({ id: 'availability_id' })
 ```
 
 ### Common Methods

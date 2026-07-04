@@ -220,25 +220,15 @@ class WaybackMachineSDK:
         }
 
 
-    @property
-    def availability(self):
-        """Idiomatic facade: client.availability.list() / client.availability.load({"id": ...})."""
-        from entity.availability_entity import AvailabilityEntity
-        cached = getattr(self, "_availability", None)
-        if cached is None:
-            cached = AvailabilityEntity(self, None)
-            self._availability = cached
-        return cached
-
-    def Availability(self, data=None):
-        # Deprecated: use client.availability instead.
+    def Availability(self, data=None) -> "AvailabilityEntity":
+        """Entity factory: client.Availability().list({}) / client.Availability().load({"id": ...})."""
         from entity.availability_entity import AvailabilityEntity
         return AvailabilityEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "WaybackMachineSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -258,3 +248,9 @@ class WaybackMachineSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.availability_entity import AvailabilityEntity

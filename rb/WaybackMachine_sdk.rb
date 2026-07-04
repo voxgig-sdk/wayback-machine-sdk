@@ -208,13 +208,7 @@ class WaybackMachineSDK
   end
 
 
-  # Idiomatic facade: client.availability.list / client.availability.load({ "id" => ... })
-  def availability
-    require_relative 'entity/availability_entity'
-    @availability ||= AvailabilityEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.availability instead.
+  # Canonical facade: client.Availability.list / client.Availability.load({ "id" => ... })
   def Availability(data = nil)
     require_relative 'entity/availability_entity'
     AvailabilityEntity.new(self, data)

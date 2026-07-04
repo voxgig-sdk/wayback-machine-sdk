@@ -204,14 +204,7 @@ class WaybackMachineSDK {
 
 
 
-  _availability?: AvailabilityEntity
-
-  // Idiomatic facade: `client.availability.list()` / `client.availability.load({ id })`.
-  get availability(): AvailabilityEntity {
-    return (this._availability ??= new AvailabilityEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.availability` instead. */
+  // Entity access: `client.Availability().list()` / `client.Availability().load({ id })`.
   Availability(data?: any) {
     const self = this
     return new AvailabilityEntity(self,data)

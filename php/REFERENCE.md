@@ -85,7 +85,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## AvailabilityEntity
 
 ```php
-$availability = $client->availability();
+$availability = $client->Availability();
 ```
 
 ### Fields
@@ -102,7 +102,7 @@ $availability = $client->availability();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->availability()->load(["id" => "availability_id"]);
+$result = $client->Availability()->load(["id" => "availability_id"]);
 ```
 
 ### Common Methods

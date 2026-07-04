@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:availability():list() / client:availability():load({ id = ... })
-function WaybackMachineSDK:availability(data)
+-- Idiomatic facade: client:Availability():list() / client:Availability():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function WaybackMachineSDK:Availability(data)
   local EntityMod = require("entity.availability_entity")
   if data == nil then
     if self._availability == nil then
@@ -253,12 +254,6 @@ function WaybackMachineSDK:availability(data)
     end
     return self._availability
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:availability() instead.
-function WaybackMachineSDK:Availability(data)
-  local EntityMod = require("entity.availability_entity")
   return EntityMod.new(self, data)
 end
 

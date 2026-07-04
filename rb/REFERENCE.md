@@ -86,7 +86,7 @@ same parameters as `direct()`. Raises on error.
 ## AvailabilityEntity
 
 ```ruby
-availability = client.availability
+availability = client.Availability
 ```
 
 ### Fields
@@ -103,7 +103,7 @@ availability = client.availability
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.availability.load({ "id" => "availability_id" })
+result = client.Availability.load({ "id" => "availability_id" })
 ```
 
 ### Common Methods
