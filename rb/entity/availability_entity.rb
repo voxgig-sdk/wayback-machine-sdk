@@ -67,10 +67,12 @@ class AvailabilityEntity
   
   # Load a single Availability.
   #
-  # @param reqmatch [AvailabilityLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param reqmatch [AvailabilityLoadMatch, Hash, nil] match criteria (id/query fields);
+  #   optional — an entity with no id-like key loads with no match (nil is treated
+  #   as an empty match, so client.Availability.load works with no args).
   # @param ctrl [Object, nil] optional per-call control
   # @return [Availability, Hash] the loaded Availability; raises WaybackMachineError on failure
-  def load(reqmatch, ctrl = nil)
+  def load(reqmatch = nil, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
       "opname" => "load",

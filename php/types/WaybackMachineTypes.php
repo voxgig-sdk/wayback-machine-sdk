@@ -19,7 +19,7 @@ class Availability
     public ?string $url = null;
 }
 
-/** Match filter for Availability#load (any subset of Availability fields). */
+/** Request payload for Availability#load. */
 class AvailabilityLoadMatch
 {
     public ?array $archived_snapshot = null;

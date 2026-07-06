@@ -8,7 +8,7 @@ Complete API reference for the WaybackMachine PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/wayback-machine_sdk.php';
+require_once __DIR__ . '/waybackmachine_sdk.php';
 
 $client = new WaybackMachineSDK($options);
 ```
@@ -45,11 +45,11 @@ $client = WaybackMachineSDK::test();
 
 Create a new `AvailabilityEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): WaybackMachineUtility`
 
 Return a copy of the SDK utility object.
 
@@ -92,8 +92,8 @@ $availability = $client->Availability();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `archived_snapshot` | ``$OBJECT`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `archived_snapshot` | `array` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 
@@ -102,24 +102,24 @@ $availability = $client->Availability();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Availability()->load(["id" => "availability_id"]);
+$result = $client->Availability()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -128,7 +128,7 @@ Set the entity match criteria.
 Create a new `AvailabilityEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

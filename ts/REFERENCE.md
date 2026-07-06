@@ -116,8 +116,8 @@ const availability = client.Availability()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `archived_snapshot` | ``$OBJECT`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `archived_snapshot` | `Record<string, any>` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 
@@ -126,7 +126,7 @@ const availability = client.Availability()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Availability().load({ id: 'availability_id' })
+const result = await client.Availability().load()
 ```
 
 ### Common Methods

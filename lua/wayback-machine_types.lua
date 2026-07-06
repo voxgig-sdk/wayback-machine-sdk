@@ -11,6 +11,8 @@
 ---@field url? string
 
 ---@class AvailabilityLoadMatch
+---@field archived_snapshot? table
+---@field url? string
 
 local M = {}
 

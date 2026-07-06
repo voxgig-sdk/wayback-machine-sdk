@@ -97,8 +97,8 @@ availability := client.Availability(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `archived_snapshot` | ``$OBJECT`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `archived_snapshot` | `map[string]any` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 
@@ -107,7 +107,7 @@ availability := client.Availability(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Availability(nil).Load(map[string]any{"id": "availability_id"}, nil)
+result, err := client.Availability(nil).Load(nil, nil)
 ```
 
 ### Common Methods

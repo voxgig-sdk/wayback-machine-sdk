@@ -14,8 +14,7 @@ type Availability struct {
 	Url *string `json:"url,omitempty"`
 }
 
-// AvailabilityLoadMatch mirrors the availability fields as an all-optional match
-// filter (Go analog of Partial<Availability>).
+// AvailabilityLoadMatch is the typed request payload for Availability.LoadTyped.
 type AvailabilityLoadMatch struct {
 	ArchivedSnapshot *map[string]any `json:"archived_snapshot,omitempty"`
 	Url *string `json:"url,omitempty"`

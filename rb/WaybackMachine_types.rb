@@ -21,7 +21,7 @@ Availability = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Availability#load (any subset of Availability fields).
+# Request payload for Availability#load.
 #
 # @!attribute [rw] archived_snapshot
 #   @return [Hash, nil]

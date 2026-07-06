@@ -8,7 +8,7 @@ Complete API reference for the WaybackMachine Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'wayback-machine_sdk'
+require_relative 'WaybackMachine_sdk'
 
 client = WaybackMachineSDK.new(options)
 ```
@@ -93,8 +93,8 @@ availability = client.Availability
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `archived_snapshot` | ``$OBJECT`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `archived_snapshot` | `Hash` | No |  |
+| `url` | `String` | No |  |
 
 ### Operations
 
@@ -103,7 +103,7 @@ availability = client.Availability
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Availability.load({ "id" => "availability_id" })
+result = client.Availability.load()
 ```
 
 ### Common Methods

@@ -10,5 +10,8 @@ export interface Availability {
   url?: string
 }
 
-export type AvailabilityLoadMatch = Partial<Availability>
+export interface AvailabilityLoadMatch {
+  archived_snapshot?: Record<string, any>
+  url?: string
+}
 

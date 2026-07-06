@@ -90,8 +90,8 @@ local availability = client:Availability(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `archived_snapshot` | ``$OBJECT`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `archived_snapshot` | `table` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 
@@ -100,7 +100,7 @@ local availability = client:Availability(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Availability():load({ id = "availability_id" })
+local result, err = client:Availability():load()
 ```
 
 ### Common Methods

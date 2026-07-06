@@ -221,7 +221,7 @@ class WaybackMachineSDK:
 
 
     def Availability(self, data=None) -> "AvailabilityEntity":
-        """Entity factory: client.Availability().list({}) / client.Availability().load({"id": ...})."""
+        """Entity factory: client.Availability().list() / client.Availability().load({"id": ...})."""
         from entity.availability_entity import AvailabilityEntity
         return AvailabilityEntity(self, data)
 

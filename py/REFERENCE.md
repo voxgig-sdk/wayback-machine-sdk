@@ -8,7 +8,7 @@ Complete API reference for the WaybackMachine Python SDK.
 ### Constructor
 
 ```python
-from wayback-machine_sdk import WaybackMachineSDK
+from waybackmachine_sdk import WaybackMachineSDK
 
 client = WaybackMachineSDK(options)
 ```
@@ -87,8 +87,8 @@ availability = client.Availability()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `archived_snapshot` | ``$OBJECT`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `archived_snapshot` | `dict` | No |  |
+| `url` | `str` | No |  |
 
 ### Operations
 
@@ -97,7 +97,7 @@ availability = client.Availability()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Availability().load({"id": "availability_id"})
+result = client.Availability().load()
 ```
 
 ### Common Methods
