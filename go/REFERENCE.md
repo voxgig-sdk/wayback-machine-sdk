@@ -91,6 +91,7 @@ same parameters as `Direct()`.
 
 ```go
 availability := client.Availability(nil)
+fmt.Println(availability.GetName()) // "availability"
 ```
 
 ### Fields
@@ -108,6 +109,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Availability(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods

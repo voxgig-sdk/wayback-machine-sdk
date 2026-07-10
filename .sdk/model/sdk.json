@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -238,15 +235,18 @@
           "url": "https://archive.org/help/wayback_api.php"
         },
         "description": "The Wayback Machine API enables developers to check if a specific URL has been archived and is accessible in the Wayback Machine. It provides a simple interface to retrieve information about archived snapshots of web pages, including the ability to specify timestamps for historical captures.",
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "Internet Archive production server",
             "url": "https://archive.org"
           }
         ],
+        "summary": "The Wayback Machine API enables developers to check if a specific URL has been archived and is accessible in the Wayback Machine.",
         "termsOfService": "https://archive.org/about/terms.php",
         "title": "Wayback Machine API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://archive.org/help/wayback_api.php"
       },
       "option": {},
       "target": {
@@ -299,6 +299,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -349,6 +352,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

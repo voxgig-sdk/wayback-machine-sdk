@@ -16,10 +16,10 @@ main: {
           url: "https://archive.org"
         }
       ]
+      summary: "The Wayback Machine API enables developers to check if a specific URL has been archived and is accessible in the Wayback Machine."
       termsOfService: "https://archive.org/about/terms.php"
       title: "Wayback Machine API"
       version: "1.0.0"
+      website: "https://archive.org/help/wayback_api.php"
     }
   }
-}
-
