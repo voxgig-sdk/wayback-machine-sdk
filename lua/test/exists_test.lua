@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- WaybackMachine SDK exists test
 
 local sdk = require("wayback-machine_sdk")
 
