@@ -38,7 +38,7 @@ client = WaybackMachineSDK()
 
 ### 3. Load an availability
 
-`load()` returns the bare record (a `dict`) and raises on error.
+`load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
@@ -122,7 +122,8 @@ Create a mock client for unit testing — no server required:
 ```python
 client = WaybackMachineSDK.test()
 
-# Entity ops return the bare record and raise on error.
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
 availability = client.Availability().load()
 # availability contains the mock response record
 ```
@@ -218,7 +219,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -240,8 +241,7 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `archived_snapshot` |  |
-| `url` |  |
+| `closest` |  |
 
 Operations: Load.
 
@@ -266,8 +266,7 @@ Create an instance: `availability = client.Availability()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `archived_snapshot` | `dict` |  |
-| `url` | `str` |  |
+| `closest` | `dict` |  |
 
 #### Example: Load
 

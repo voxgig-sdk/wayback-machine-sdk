@@ -90,8 +90,7 @@ local availability = client:Availability(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `archived_snapshot` | `table` | No |  |
-| `url` | `string` | No |  |
+| `closest` | `table` | No |  |
 
 ### Operations
 

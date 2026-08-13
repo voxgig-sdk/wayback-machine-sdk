@@ -10,27 +10,19 @@
 
 # Availability entity data model.
 #
-# @!attribute [rw] archived_snapshot
+# @!attribute [rw] closest
 #   @return [Hash, nil]
-#
-# @!attribute [rw] url
-#   @return [String, nil]
 Availability = Struct.new(
-  :archived_snapshot,
-  :url,
+  :closest,
   keyword_init: true
 )
 
 # Request payload for Availability#load.
 #
-# @!attribute [rw] archived_snapshot
+# @!attribute [rw] closest
 #   @return [Hash, nil]
-#
-# @!attribute [rw] url
-#   @return [String, nil]
 AvailabilityLoadMatch = Struct.new(
-  :archived_snapshot,
-  :url,
+  :closest,
   keyword_init: true
 )
 

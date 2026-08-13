@@ -116,8 +116,7 @@ const availability = client.Availability()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `archived_snapshot` | `Record<string, any>` | No |  |
-| `url` | `string` | No |  |
+| `closest` | `Record<string, any>` | No |  |
 
 ### Operations
 

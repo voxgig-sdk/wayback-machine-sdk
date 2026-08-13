@@ -15,14 +15,12 @@ declare(strict_types=1);
 /** Availability entity data model. */
 class Availability
 {
-    public ?array $archived_snapshot = null;
-    public ?string $url = null;
+    public ?array $closest = null;
 }
 
 /** Request payload for Availability#load. */
 class AvailabilityLoadMatch
 {
-    public ?array $archived_snapshot = null;
-    public ?string $url = null;
+    public ?array $closest = null;
 }
 

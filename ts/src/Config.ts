@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'WaybackMachine',
   }
 
 
@@ -56,17 +56,10 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "archived_snapshot",
+          "name": "closest",
           "req": false,
           "type": "`$OBJECT`",
           "index$": 0
-        },
-        {
-          "active": true,
-          "name": "url",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 1
         }
       ],
       "name": "availability",
@@ -108,6 +101,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/wayback/available",
               "parts": [
@@ -123,7 +117,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.archived_snapshots`"
               },
               "index$": 0
             }

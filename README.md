@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = WaybackMachineSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = WaybackMachineSDK.test({
+  entity: {
+    availability: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const availability = await client.Availability().load()
-// availability is a bare Availability populated with mock data
+// availability is the Availability entity, populated with mock data
+// — call availability.data() for the record itself
 console.log(availability)
 ```
 
@@ -182,7 +191,7 @@ require_once 'waybackmachine_sdk.php';
 $client = new WaybackMachineSDK();
 
 
-// Load a specific availability (returns the bare record; throws on error)
+// Load a specific availability (returns the ENTITY; call data_get() for the record; throws on error)
 $availability = $client->Availability()->load();
 print_r($availability);
 ```
@@ -210,7 +219,7 @@ require_relative "WaybackMachine_sdk"
 client = WaybackMachineSDK.new
 
 
-# Load a specific availability (returns the bare record; raises on error)
+# Load a specific availability (returns the ENTITY; call data_get for the record)
 availability = client.Availability.load()
 puts availability
 ```
@@ -344,6 +353,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://archive.org/help/wayback_api.php](https://archive.org/help/wayback_api.php)
 

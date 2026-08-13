@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from waybackmachine_sdk.utility.voxgig_struct import voxgig_struct as vs
 from waybackmachine_sdk import WaybackMachineSDK
-from core import helpers
+from waybackmachine_sdk.core import helpers
 from test import runner
 
 
@@ -61,11 +61,11 @@ def _availability_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "WAYBACKMACHINE_TEST_AVAILABILITY_ENTID": {},
-        "WAYBACKMACHINE_TEST_LIVE": "FALSE",
+        "WAYBACK_MACHINE_TEST_AVAILABILITY_ENTID": {},
+        "WAYBACK_MACHINE_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("WAYBACKMACHINE_TEST_LIVE") == "TRUE"
+    live = env.get("WAYBACK_MACHINE_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

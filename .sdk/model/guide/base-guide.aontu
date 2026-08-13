@@ -8,6 +8,7 @@ guide: {
   entity: availability: {
     path: "/wayback/available": {
       op: load: method: *GET
+      op: load: transform: res: *("`body.archived_snapshots`")|top
     }
   }
 

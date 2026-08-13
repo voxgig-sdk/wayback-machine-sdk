@@ -32,17 +32,10 @@ class WaybackMachineConfig
           'fields' => [
             [
               'active' => true,
-              'name' => 'archived_snapshot',
+              'name' => 'closest',
               'req' => false,
               'type' => '`$OBJECT`',
               'index$' => 0,
-            ],
-            [
-              'active' => true,
-              'name' => 'url',
-              'req' => false,
-              'type' => '`$STRING`',
-              'index$' => 1,
             ],
           ],
           'name' => 'availability',
@@ -84,6 +77,7 @@ class WaybackMachineConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/wayback/available',
                   'parts' => [
@@ -99,7 +93,7 @@ class WaybackMachineConfig
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.archived_snapshots`',
                   ],
                   'index$' => 0,
                 ],

@@ -6,12 +6,10 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 
 export interface Availability {
-  archived_snapshot?: Record<string, any>
-  url?: string
+  closest?: Record<string, any>
 }
 
 export interface AvailabilityLoadMatch {
-  archived_snapshot?: Record<string, any>
-  url?: string
+  closest?: Record<string, any>
 }
 

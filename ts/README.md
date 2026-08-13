@@ -121,7 +121,8 @@ Create a mock client for unit testing — no server required:
 const client = WaybackMachineSDK.test()
 
 const availability = await client.Availability().load()
-// availability is a bare entity populated with mock response data
+// availability is the entity, populated with mock response data
+// — call availability.data() for the record itself
 console.log(availability)
 ```
 
@@ -284,8 +285,7 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `archived_snapshot` |  |
-| `url` |  |
+| `closest` |  |
 
 Operations: load.
 
@@ -310,8 +310,7 @@ Create an instance: `const availability = client.Availability()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `archived_snapshot` | `Record<string, any>` |  |
-| `url` | `string` |  |
+| `closest` | `Record<string, any>` |  |
 
 #### Example: Load
 

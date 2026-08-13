@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import WaybackMachineControl
-from core.error import WaybackMachineError
-from core.result import WaybackMachineResult
-from core.spec import WaybackMachineSpec
+from waybackmachine_sdk.config import make_config
+from waybackmachine_sdk.features import _make_feature
+from waybackmachine_sdk.core.control import WaybackMachineControl
+from waybackmachine_sdk.core.error import WaybackMachineError
+from waybackmachine_sdk.core.result import WaybackMachineResult
+from waybackmachine_sdk.core.spec import WaybackMachineSpec
 
 
 # True when this SDK was generated with the named feature.

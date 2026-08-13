@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# WaybackMachine SDK exists test
 
 import pytest
 from waybackmachine_sdk import WaybackMachineSDK

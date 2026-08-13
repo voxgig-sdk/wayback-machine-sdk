@@ -23,8 +23,8 @@ module WaybackMachineTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("WAYBACKMACHINE_TEST_LIVE")
-    override = getenv("WAYBACKMACHINE_TEST_OVERRIDE")
+    live = getenv("WAYBACK_MACHINE_TEST_LIVE")
+    override = getenv("WAYBACK_MACHINE_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module WaybackMachineTestRunner
       end
     end
 
-    explain = getenv("WAYBACKMACHINE_TEST_EXPLAIN")
-    m["WAYBACKMACHINE_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("WAYBACK_MACHINE_TEST_EXPLAIN")
+    m["WAYBACK_MACHINE_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

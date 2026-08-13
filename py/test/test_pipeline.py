@@ -16,11 +16,11 @@
 import pytest
 
 from waybackmachine_sdk import WaybackMachineSDK
-from core.error import WaybackMachineError
-from core.result import WaybackMachineResult
-from core.response import WaybackMachineResponse
-from core.spec import WaybackMachineSpec
-from feature.base_feature import WaybackMachineBaseFeature
+from waybackmachine_sdk.core.error import WaybackMachineError
+from waybackmachine_sdk.core.result import WaybackMachineResult
+from waybackmachine_sdk.core.response import WaybackMachineResponse
+from waybackmachine_sdk.core.spec import WaybackMachineSpec
+from waybackmachine_sdk.feature.base_feature import WaybackMachineBaseFeature
 
 
 def _client():

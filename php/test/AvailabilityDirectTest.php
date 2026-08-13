@@ -71,11 +71,11 @@ function availability_direct_setup($mockres)
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "WAYBACKMACHINE_TEST_AVAILABILITY_ENTID" => [],
-        "WAYBACKMACHINE_TEST_LIVE" => "FALSE",
+        "WAYBACK_MACHINE_TEST_AVAILABILITY_ENTID" => [],
+        "WAYBACK_MACHINE_TEST_LIVE" => "FALSE",
     ]);
 
-    $live = $env["WAYBACKMACHINE_TEST_LIVE"] === "TRUE";
+    $live = $env["WAYBACK_MACHINE_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [

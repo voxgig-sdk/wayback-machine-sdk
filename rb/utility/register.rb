@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ WaybackMachineUtility.registrar = ->(u) {
   u.prepare_params = WaybackMachineUtilities::PrepareParams
   u.prepare_path = WaybackMachineUtilities::PreparePath
   u.prepare_query = WaybackMachineUtilities::PrepareQuery
+  u.graphql_body = WaybackMachineUtilities::GraphqlBody
+  u.graphql_errors = WaybackMachineUtilities::GraphqlErrors
   u.result_basic = WaybackMachineUtilities::ResultBasic
   u.result_body = WaybackMachineUtilities::ResultBody
   u.result_headers = WaybackMachineUtilities::ResultHeaders

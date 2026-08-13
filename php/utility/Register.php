@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ WaybackMachineUtility::setRegistrar(function (WaybackMachineUtility $u): void {
     $u->prepare_params = [WaybackMachinePrepareParams::class, 'call'];
     $u->prepare_path = [WaybackMachinePreparePath::class, 'call'];
     $u->prepare_query = [WaybackMachinePrepareQuery::class, 'call'];
+    $u->graphql_body = [WaybackMachineGraphql::class, 'body'];
+    $u->graphql_errors = [WaybackMachineGraphql::class, 'errors'];
     $u->result_basic = [WaybackMachineResultBasic::class, 'call'];
     $u->result_body = [WaybackMachineResultBody::class, 'call'];
     $u->result_headers = [WaybackMachineResultHeaders::class, 'call'];

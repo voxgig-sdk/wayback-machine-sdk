@@ -6,14 +6,9 @@ main: kit: entity: availability: {
 
   fields: [
     {
-      name: "archived_snapshot"
+      name: "closest"
       req: false
       type: "`$OBJECT`"
-    }
-    {
-      name: "url"
-      req: false
-      type: "`$STRING`"
     }
   ]
 
@@ -66,7 +61,7 @@ main: kit: entity: availability: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.archived_snapshots`"
           }
         }
       ]

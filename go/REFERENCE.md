@@ -98,8 +98,7 @@ fmt.Println(availability.GetName()) // "availability"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `archived_snapshot` | `map[string]any` | No |  |
-| `url` | `string` | No |  |
+| `closest` | `map[string]any` | No |  |
 
 ### Operations
 

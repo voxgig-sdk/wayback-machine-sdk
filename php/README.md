@@ -35,7 +35,7 @@ $client = new WaybackMachineSDK();
 
 ```php
 try {
-    // load() returns the bare Availability record (throws on error).
+    // load() returns the ENTITY — call data_get() for the Availability record (throws on error).
     $availability = $client->Availability()->load();
     print_r($availability);
 } catch (\Throwable $err) {
@@ -123,7 +123,8 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = WaybackMachineSDK::test();
 
-// Entity ops return the bare mock record (throws on error).
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
 $availability = $client->Availability()->load();
 print_r($availability);
 ```
@@ -222,7 +223,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -244,8 +245,7 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `archived_snapshot` |  |
-| `url` |  |
+| `closest` |  |
 
 Operations: Load.
 
@@ -270,13 +270,12 @@ Create an instance: `$availability = $client->Availability();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `archived_snapshot` | `array` |  |
-| `url` | `string` |  |
+| `closest` | `array` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Availability record (throws on error).
+// load() returns the ENTITY — call data_get() for the Availability record (throws on error).
 $availability = $client->Availability()->load();
 ```
 

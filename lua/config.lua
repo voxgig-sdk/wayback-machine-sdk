@@ -26,17 +26,10 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "archived_snapshot",
+            ["name"] = "closest",
             ["req"] = false,
             ["type"] = "`$OBJECT`",
             ["index$"] = 0,
-          },
-          {
-            ["active"] = true,
-            ["name"] = "url",
-            ["req"] = false,
-            ["type"] = "`$STRING`",
-            ["index$"] = 1,
           },
         },
         ["name"] = "availability",
@@ -78,6 +71,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/wayback/available",
                 ["parts"] = {
@@ -93,7 +87,7 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.archived_snapshots`",
                 },
                 ["index$"] = 0,
               },

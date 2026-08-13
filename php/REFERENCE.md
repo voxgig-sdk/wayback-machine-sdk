@@ -92,8 +92,7 @@ $availability = $client->Availability();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `archived_snapshot` | `array` | No |  |
-| `url` | `string` | No |  |
+| `closest` | `array` | No |  |
 
 ### Operations
 

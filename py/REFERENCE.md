@@ -87,8 +87,7 @@ availability = client.Availability()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `archived_snapshot` | `dict` | No |  |
-| `url` | `str` | No |  |
+| `closest` | `dict` | No |  |
 
 ### Operations
 

@@ -7,12 +7,10 @@
 -- edit by hand.
 
 ---@class Availability
----@field archived_snapshot? table
----@field url? string
+---@field closest? table
 
 ---@class AvailabilityLoadMatch
----@field archived_snapshot? table
----@field url? string
+---@field closest? table
 
 local M = {}
 

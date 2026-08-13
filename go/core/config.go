@@ -26,17 +26,10 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"active": true,
-						"name": "archived_snapshot",
+						"name": "closest",
 						"req": false,
 						"type": "`$OBJECT`",
 						"index$": 0,
-					},
-					map[string]any{
-						"active": true,
-						"name": "url",
-						"req": false,
-						"type": "`$STRING`",
-						"index$": 1,
 					},
 				},
 				"name": "availability",
@@ -78,6 +71,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/wayback/available",
 								"parts": []any{
@@ -93,12 +87,11 @@ func MakeConfig() map[string]any {
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.archived_snapshots`",
 								},
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{

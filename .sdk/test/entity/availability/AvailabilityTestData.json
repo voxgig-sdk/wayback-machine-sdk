@@ -2,18 +2,15 @@
   "existing": {
     "availability": {
       "AVAILABILITY00": {
-        "archived_snapshot": {},
-        "url": "s15",
+        "closest": {},
         "id": "AVAILABILITY00"
       },
       "AVAILABILITY01": {
-        "archived_snapshot": {},
-        "url": "s29",
+        "closest": {},
         "id": "AVAILABILITY01"
       },
       "AVAILABILITY02": {
-        "archived_snapshot": {},
-        "url": "s3d",
+        "closest": {},
         "id": "AVAILABILITY02"
       }
     }
@@ -21,8 +18,7 @@
   "new": {
     "availability": {
       "availability_ref01": {
-        "archived_snapshot": {},
-        "url": "s51"
+        "closest": {}
       }
     }
   }

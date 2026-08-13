@@ -66,11 +66,11 @@ function availability_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["WAYBACKMACHINE_TEST_AVAILABILITY_ENTID"] = {},
-    ["WAYBACKMACHINE_TEST_LIVE"] = "FALSE",
+    ["WAYBACK_MACHINE_TEST_AVAILABILITY_ENTID"] = {},
+    ["WAYBACK_MACHINE_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["WAYBACKMACHINE_TEST_LIVE"] == "TRUE"
+  local live = env["WAYBACK_MACHINE_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

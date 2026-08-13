@@ -258,8 +258,7 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"archived_snapshot"` |  |
-| `"url"` |  |
+| `"closest"` |  |
 
 Operations: Load.
 
@@ -284,8 +283,7 @@ Create an instance: `availability := client.Availability(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `archived_snapshot` | `map[string]any` |  |
-| `url` | `string` |  |
+| `closest` | `map[string]any` |  |
 
 #### Example: Load
 

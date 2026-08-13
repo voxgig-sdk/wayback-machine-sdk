@@ -93,8 +93,7 @@ availability = client.Availability
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `archived_snapshot` | `Hash` | No |  |
-| `url` | `String` | No |  |
+| `closest` | `Hash` | No |  |
 
 ### Operations
 

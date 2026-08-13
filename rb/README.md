@@ -34,7 +34,7 @@ client = WaybackMachineSDK.new
 
 ```ruby
 begin
-  # load returns the bare Availability record (raises on error).
+  # load returns the ENTITY — call data_get for the Availability record (raises on error).
   availability = client.Availability.load()
   puts availability
 rescue => err
@@ -117,7 +117,8 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = WaybackMachineSDK.test
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 availability = client.Availability.load()
 puts availability
 ```
@@ -234,8 +235,7 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `archived_snapshot` |  |
-| `url` |  |
+| `closest` |  |
 
 Operations: Load.
 
@@ -260,13 +260,12 @@ Create an instance: `availability = client.Availability`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `archived_snapshot` | `Hash` |  |
-| `url` | `String` |  |
+| `closest` | `Hash` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Availability record (raises on error).
+# load returns the ENTITY — call data_get for the Availability record (raises on error).
 availability = client.Availability.load()
 ```
 
