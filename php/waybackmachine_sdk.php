@@ -40,7 +40,7 @@ class WaybackMachineSDK
         $utility = new WaybackMachineUtility();
         $this->_utility = $utility;
 
-        $config = WaybackMachineConfig::make_config();
+        $config = WaybackMachineConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

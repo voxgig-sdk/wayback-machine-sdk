@@ -1,6 +1,20 @@
 # WaybackMachine SDK configuration
 
 module WaybackMachineConfig
+  # Return the process-wide config, built once on first use. The SDK reads
+  # the config on every request and never writes to it, so one instance is
+  # shared by every client rather than rebuilt per client.
+  #
+  # The returned hash is shared: treat it as read-only. Callers that need to
+  # mutate should use make_config, which always returns a fresh copy.
+  def self.shared_config
+    @shared_config ||= make_config
+  end
+
+
+  # Build a fresh, fully materialised config hash. Every call rebuilds the
+  # whole structure, so prefer shared_config unless you need a private copy
+  # you intend to mutate.
   def self.make_config
     {
       "main" => {
@@ -26,11 +40,8 @@ module WaybackMachineConfig
         "availability" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "closest",
-              "req" => false,
               "type" => "`$OBJECT`",
-              "index$" => 0,
             },
           ],
           "name" => "availability",
@@ -40,29 +51,23 @@ module WaybackMachineConfig
               "name" => "load",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "query" => [
                       {
-                        "active" => true,
                         "example" => "myCallback",
                         "kind" => "query",
                         "name" => "callback",
                         "orig" => "callback",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => "20150101",
                         "kind" => "query",
                         "name" => "timestamp",
                         "orig" => "timestamp",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => "https://example.com",
                         "kind" => "query",
                         "name" => "url",
@@ -90,10 +95,8 @@ module WaybackMachineConfig
                     "req" => "`reqdata`",
                     "res" => "`body.archived_snapshots`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "load",
             },
           },
           "relations" => {

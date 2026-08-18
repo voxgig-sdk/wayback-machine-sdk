@@ -36,7 +36,7 @@ class Config {
 
 
   options = {
-    base: 'https://archive.org',
+    base: "https://archive.org",
 
     headers: {
       "content-type": "application/json"
@@ -55,11 +55,8 @@ class Config {
     "availability": {
       "fields": [
         {
-          "active": true,
           "name": "closest",
-          "req": false,
-          "type": "`$OBJECT`",
-          "index$": 0
+          "type": "`$OBJECT`"
         }
       ],
       "name": "availability",
@@ -69,29 +66,23 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "myCallback",
                     "kind": "query",
                     "name": "callback",
                     "orig": "callback",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "20150101",
                     "kind": "query",
                     "name": "timestamp",
                     "orig": "timestamp",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "https://example.com",
                     "kind": "query",
                     "name": "url",
@@ -118,11 +109,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.archived_snapshots`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {

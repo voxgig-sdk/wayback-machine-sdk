@@ -15,7 +15,7 @@ require_relative "../WaybackMachine_sdk"
 module WaybackMachineFeatureHarness
   # True when this SDK was generated with the named feature.
   def self.has_feature?(name)
-    f = WaybackMachineConfig.make_config["feature"]
+    f = WaybackMachineConfig.shared_config["feature"]
     f.is_a?(Hash) && !f[name].nil?
   end
 
