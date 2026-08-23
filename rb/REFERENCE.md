@@ -93,7 +93,7 @@ availability = client.Availability
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `closest` | `Hash` | No |  |
+| `closest` | `Hash` | No | Information about the closest available snapshot |
 
 ### Operations
 

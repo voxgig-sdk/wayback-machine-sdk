@@ -7,6 +7,9 @@ local function make_config()
   return {
     main = {
       name = "WaybackMachine",
+      slug = "wayback-machine",
+      version = "0.0.1",
+      target = "lua",
     },
     feature = {
       ["test"] = {
@@ -29,6 +32,7 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "closest",
+            ["short"] = "Information about the closest available snapshot",
             ["type"] = "`$OBJECT`",
           },
         },

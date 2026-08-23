@@ -92,7 +92,7 @@ $availability = $client->Availability();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `closest` | `array` | No |  |
+| `closest` | `array` | No | Information about the closest available snapshot |
 
 ### Operations
 

@@ -28,6 +28,9 @@ def make_config():
     return {
         "main": {
             "name": "WaybackMachine",
+            "slug": "wayback-machine",
+            "version": "0.0.1",
+            "target": "py",
         },
         "feature": {
             "test": {
@@ -50,6 +53,7 @@ def make_config():
         "fields": [
           {
             "name": "closest",
+            "short": "Information about the closest available snapshot",
             "type": "`$OBJECT`",
           },
         ],

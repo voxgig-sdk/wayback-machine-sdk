@@ -36,6 +36,7 @@
               "active": true,
               "name": "closest",
               "req": false,
+              "short": "Information about the closest available snapshot",
               "type": "`$OBJECT`"
             }
           ],

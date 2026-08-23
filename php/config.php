@@ -33,6 +33,9 @@ class WaybackMachineConfig
         return [
             "main" => [
                 "name" => "WaybackMachine",
+                "slug" => "wayback-machine",
+                "version" => "0.0.1",
+                "target" => "php",
             ],
             "feature" => [
                 "test" => [
@@ -55,6 +58,7 @@ class WaybackMachineConfig
           'fields' => [
             [
               'name' => 'closest',
+              'short' => 'Information about the closest available snapshot',
               'type' => '`$OBJECT`',
             ],
           ],

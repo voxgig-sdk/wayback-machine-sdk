@@ -116,7 +116,7 @@ const availability = client.Availability()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `closest` | `Record<string, any>` | No |  |
+| `closest` | `Record<string, any>` | No | Information about the closest available snapshot |
 
 ### Operations
 

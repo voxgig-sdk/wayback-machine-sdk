@@ -225,7 +225,7 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `closest` |  |
+| `closest` | Information about the closest available snapshot |
 
 Operations: Load.
 
@@ -250,7 +250,7 @@ Create an instance: `local availability = client:Availability(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `closest` | `table` |  |
+| `closest` | `table` | Information about the closest available snapshot |
 
 #### Example: Load
 

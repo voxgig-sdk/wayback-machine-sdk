@@ -6,7 +6,7 @@ The Golang SDK for the WaybackMachine API — an entity-oriented client using st
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.Availability(nil)` — each with the same small set of operations (`Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -258,7 +258,7 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"closest"` |  |
+| `"closest"` | Information about the closest available snapshot |
 
 Operations: Load.
 
@@ -283,7 +283,7 @@ Create an instance: `availability := client.Availability(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `closest` | `map[string]any` |  |
+| `closest` | `map[string]any` | Information about the closest available snapshot |
 
 #### Example: Load
 

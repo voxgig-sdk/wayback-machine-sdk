@@ -19,6 +19,9 @@ module WaybackMachineConfig
     {
       "main" => {
         "name" => "WaybackMachine",
+        "slug" => "wayback-machine",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {
@@ -41,6 +44,7 @@ module WaybackMachineConfig
           "fields" => [
             {
               "name" => "closest",
+              "short" => "Information about the closest available snapshot",
               "type" => "`$OBJECT`",
             },
           ],

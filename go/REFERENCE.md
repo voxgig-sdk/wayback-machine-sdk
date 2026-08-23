@@ -98,7 +98,7 @@ fmt.Println(availability.GetName()) // "availability"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `closest` | `map[string]any` | No |  |
+| `closest` | `map[string]any` | No | Information about the closest available snapshot |
 
 ### Operations
 

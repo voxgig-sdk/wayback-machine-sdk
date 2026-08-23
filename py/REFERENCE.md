@@ -87,7 +87,7 @@ availability = client.Availability()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `closest` | `dict` | No |  |
+| `closest` | `dict` | No | Information about the closest available snapshot |
 
 ### Operations
 

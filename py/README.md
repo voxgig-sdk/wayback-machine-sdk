@@ -241,7 +241,7 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `closest` |  |
+| `closest` | Information about the closest available snapshot |
 
 Operations: Load.
 
@@ -266,7 +266,7 @@ Create an instance: `availability = client.Availability()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `closest` | `dict` |  |
+| `closest` | `dict` | Information about the closest available snapshot |
 
 #### Example: Load
 

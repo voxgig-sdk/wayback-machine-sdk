@@ -235,7 +235,7 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `closest` |  |
+| `closest` | Information about the closest available snapshot |
 
 Operations: Load.
 
@@ -260,7 +260,7 @@ Create an instance: `availability = client.Availability`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `closest` | `Hash` |  |
+| `closest` | `Hash` | Information about the closest available snapshot |
 
 #### Example: Load
 

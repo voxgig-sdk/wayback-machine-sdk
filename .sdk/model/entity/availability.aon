@@ -8,6 +8,7 @@ main: kit: entity: availability: {
     {
       name: "closest"
       req: false
+      short: "Information about the closest available snapshot"
       type: "`$OBJECT`"
     }
   ]
