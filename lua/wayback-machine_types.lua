@@ -10,7 +10,9 @@
 ---@field closest? table
 
 ---@class AvailabilityLoadMatch
----@field closest? table
+---@field callback? string
+---@field timestamp? string
+---@field url string
 
 local M = {}
 

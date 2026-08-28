@@ -19,10 +19,18 @@ Availability = Struct.new(
 
 # Request payload for Availability#load.
 #
-# @!attribute [rw] closest
-#   @return [Hash, nil]
+# @!attribute [rw] callback
+#   @return [String, nil]
+#
+# @!attribute [rw] timestamp
+#   @return [String, nil]
+#
+# @!attribute [rw] url
+#   @return [String]
 AvailabilityLoadMatch = Struct.new(
-  :closest,
+  :callback,
+  :timestamp,
+  :url,
   keyword_init: true
 )
 

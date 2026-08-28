@@ -20,5 +20,10 @@ class Availability(TypedDict, total=False):
     closest: dict
 
 
-class AvailabilityLoadMatch(TypedDict, total=False):
-    closest: dict
+class AvailabilityLoadMatchRequired(TypedDict):
+    url: str
+
+
+class AvailabilityLoadMatch(AvailabilityLoadMatchRequired, total=False):
+    callback: str
+    timestamp: str

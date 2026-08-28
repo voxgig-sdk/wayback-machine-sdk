@@ -19,7 +19,9 @@ type Availability struct {
 
 // AvailabilityLoadMatch is the typed request payload for Availability.LoadTyped.
 type AvailabilityLoadMatch struct {
-	Closest *map[string]any `json:"closest,omitempty"`
+	Callback *string `json:"callback,omitempty"`
+	Timestamp *string `json:"timestamp,omitempty"`
+	Url string `json:"url"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

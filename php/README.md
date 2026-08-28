@@ -36,7 +36,7 @@ $client = new WaybackMachineSDK();
 ```php
 try {
     // load() returns the ENTITY — call data_get() for the Availability record (throws on error).
-    $availability = $client->Availability()->load();
+    $availability = $client->Availability()->load(["url" => "example_url"]);
     print_r($availability);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -51,7 +51,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $availability = $client->Availability()->load();
+    $availability = $client->Availability()->load(["url" => "example"]);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -125,7 +125,7 @@ $client = WaybackMachineSDK::test();
 
 // Entity ops return the ENTITY (throws on error);
 // call data_get() for the mock record.
-$availability = $client->Availability()->load();
+$availability = $client->Availability()->load(["url" => "example"]);
 print_r($availability);
 ```
 
@@ -276,8 +276,31 @@ Create an instance: `$availability = $client->Availability();`
 
 ```php
 // load() returns the ENTITY — call data_get() for the Availability record (throws on error).
-$availability = $client->Availability()->load();
+$availability = $client->Availability()->load(["url" => "url"]);
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced
@@ -357,7 +380,7 @@ stores the returned data and match criteria internally.
 
 ```php
 $availability = $client->Availability();
-$availability->load();
+$availability->load(["url" => "example"]);
 
 // $availability->data_get() now returns the availability data from the last load
 // $availability->match_get() returns the last match criteria

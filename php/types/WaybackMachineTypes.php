@@ -21,6 +21,8 @@ class Availability
 /** Request payload for Availability#load. */
 class AvailabilityLoadMatch
 {
-    public ?array $closest = null;
+    public ?string $callback = null;
+    public ?string $timestamp = null;
+    public string $url;
 }
 

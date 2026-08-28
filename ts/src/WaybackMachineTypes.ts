@@ -10,6 +10,8 @@ export interface Availability {
 }
 
 export interface AvailabilityLoadMatch {
-  closest?: Record<string, any>
+  callback?: string
+  timestamp?: string
+  url: string
 }
 
