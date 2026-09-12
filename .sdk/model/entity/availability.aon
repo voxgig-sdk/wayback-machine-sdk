@@ -49,9 +49,13 @@ main: kit: entity: availability: {
           }
           method: "GET"
           orig: "/wayback/available"
-          parts: [
-            "wayback"
-            "available"
+          segments: [
+            {
+              lit: "wayback"
+            }
+            {
+              lit: "available"
+            }
           ]
           select: {
             exist: [

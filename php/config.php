@@ -99,9 +99,13 @@ class WaybackMachineConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/wayback/available',
-                  'parts' => [
-                    'wayback',
-                    'available',
+                  'segments' => [
+                    [
+                      'lit' => 'wayback',
+                    ],
+                    [
+                      'lit' => 'available',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -113,6 +117,10 @@ class WaybackMachineConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.archived_snapshots`',
+                  ],
+                  'parts' => [
+                    'wayback',
+                    'available',
                   ],
                 ],
               ],
