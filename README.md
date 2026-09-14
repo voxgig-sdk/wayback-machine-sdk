@@ -105,7 +105,7 @@ local result, err = client:Availability():load({ url = "example" })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/wayback-machine` | publish pending — [install from git tag](https://github.com/voxgig-sdk/wayback-machine-sdk/releases) |
+| TypeScript | `@voxgig-sdk/wayback-machine-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/wayback-machine-sdk/releases) |
 | Python | `voxgig-sdk-wayback-machine` | publish pending — [install from git tag](https://github.com/voxgig-sdk/wayback-machine-sdk/releases) |
 | PHP | `voxgig-sdk/wayback-machine` | publish pending — [install from git tag](https://github.com/voxgig-sdk/wayback-machine-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/wayback-machine-sdk/go` | `go get github.com/voxgig-sdk/wayback-machine-sdk/go@latest` |
@@ -119,7 +119,7 @@ local result, err = client:Availability():load({ url = "example" })
 ### TypeScript
 
 ```ts
-import { WaybackMachineSDK } from '@voxgig-sdk/wayback-machine'
+import { WaybackMachineSDK } from '@voxgig-sdk/wayback-machine-sdk'
 
 const client = new WaybackMachineSDK()
 

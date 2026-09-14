@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { WaybackMachineSDK } from '@voxgig-sdk/wayback-machine'
+import { WaybackMachineSDK } from '@voxgig-sdk/wayback-machine-sdk'
 
 const client = new WaybackMachineSDK()
 ```
@@ -401,7 +401,7 @@ wayback-machine/
 Import the SDK from the package root:
 
 ```ts
-import { WaybackMachineSDK } from '@voxgig-sdk/wayback-machine'
+import { WaybackMachineSDK } from '@voxgig-sdk/wayback-machine-sdk'
 ```
 
 ### Entity state
