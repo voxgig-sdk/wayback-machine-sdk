@@ -1,12 +1,18 @@
 # WaybackMachine SDK feature factory
 
 from waybackmachine_sdk.feature.base_feature import WaybackMachineBaseFeature
+from waybackmachine_sdk.feature.ratelimit_feature import WaybackMachineRatelimitFeature
+from waybackmachine_sdk.feature.retry_feature import WaybackMachineRetryFeature
 from waybackmachine_sdk.feature.test_feature import WaybackMachineTestFeature
+from waybackmachine_sdk.feature.timeout_feature import WaybackMachineTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: WaybackMachineBaseFeature(),
+    "ratelimit": lambda: WaybackMachineRatelimitFeature(),
+    "retry": lambda: WaybackMachineRetryFeature(),
     "test": lambda: WaybackMachineTestFeature(),
+    "timeout": lambda: WaybackMachineTimeoutFeature(),
 }
 
 

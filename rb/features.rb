@@ -1,7 +1,10 @@
 # WaybackMachine SDK feature factory
 
 require_relative 'feature/base_feature'
+require_relative 'feature/ratelimit_feature'
+require_relative 'feature/retry_feature'
 require_relative 'feature/test_feature'
+require_relative 'feature/timeout_feature'
 
 
 module WaybackMachineFeatures
@@ -9,8 +12,14 @@ module WaybackMachineFeatures
     case name
     when "base"
       WaybackMachineBaseFeature.new
+    when "ratelimit"
+      WaybackMachineRatelimitFeature.new
+    when "retry"
+      WaybackMachineRetryFeature.new
     when "test"
       WaybackMachineTestFeature.new
+    when "timeout"
+      WaybackMachineTimeoutFeature.new
     else
       WaybackMachineBaseFeature.new
     end

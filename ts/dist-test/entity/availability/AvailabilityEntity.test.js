@@ -40,6 +40,8 @@ const node_path_1 = __importDefault(require("node:path"));
 const Fs = __importStar(require("node:fs"));
 const node_test_1 = require("node:test");
 const node_assert_1 = __importDefault(require("node:assert"));
+const live_runner_1 = require("../../live-runner");
+const live_entity_1 = require("../../live-entity");
 const __1 = require("../../..");
 const utility_1 = require("../../utility");
 // AFTER the imports on purpose: TypeScript hoists `import` above any
@@ -59,16 +61,12 @@ const utility_1 = require("../../utility");
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.WAYBACK_MACHINE_TEST_LIVE;
         for (const op of ['load']) {
-            if ((0, utility_1.maybeSkipControl)(t, 'entityOp', 'availability.' + op, live))
+            if (!live && (0, utility_1.maybeSkipControl)(t, 'entityOp', 'availability.' + op, live))
                 return;
         }
         const setup = basicSetup();
-        // The basic flow consumes synthetic IDs and field values from the
-        // fixture (entity TestData.json). Those don't exist on the live API.
-        // Skip live runs unless the user provided a real ENTID env override.
-        if (setup.syntheticOnly) {
-            t.skip('live entity test uses synthetic IDs from fixture — set WAYBACK_MACHINE_TEST_AVAILABILITY_ENTID JSON to run live');
-            return;
+        if (setup.live) {
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": [{ "active": true, "name": "closest", "req": false, "short": "Information about the closest available snapshot", "type": "`$OBJECT`", "index$": 0 }], "name": "availability", "op": { "load": { "input": "data", "name": "load", "points": [{ "active": true, "args": { "query": [{ "active": true, "example": "myCallback", "kind": "query", "name": "callback", "orig": "callback", "reqd": false, "type": "`$STRING`", "index$": 0 }, { "active": true, "example": "20150101", "kind": "query", "name": "timestamp", "orig": "timestamp", "reqd": false, "type": "`$STRING`", "index$": 1 }, { "active": true, "example": "https://example.com", "kind": "query", "name": "url", "orig": "url", "reqd": true, "type": "`$STRING`", "index$": 2 }] }, "contract": { "id": "GET /wayback/available", "json": "{\"operationId\":\"getAvailableSnapshot\",\"parameters\":[{\"description\":\"The URL to check for archived snapshots\",\"in\":\"query\",\"name\":\"url\",\"required\":true,\"schema\":{\"example\":\"https://example.com\",\"format\":\"uri\",\"type\":\"string\"}},{\"description\":\"Timestamp in the format YYYYMMDDhhmmss to find the closest archived snapshot. If not specified, returns the most recent snapshot.\",\"in\":\"query\",\"name\":\"timestamp\",\"required\":false,\"schema\":{\"example\":\"20150101\",\"pattern\":\"^[0-9]{4,14}$\",\"type\":\"string\"}},{\"description\":\"Optional JSONP callback function name\",\"in\":\"query\",\"name\":\"callback\",\"required\":false,\"schema\":{\"example\":\"myCallback\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"examples\":{\"availableSnapshot\":{\"summary\":\"Available snapshot found\",\"value\":{\"archived_snapshots\":{\"closest\":{\"available\":true,\"status\":\"200\",\"timestamp\":\"20150101000000\",\"url\":\"http://web.archive.org/web/20150101000000/https://example.com\"}},\"url\":\"https://example.com\"}},\"noSnapshot\":{\"summary\":\"No snapshot available\",\"value\":{\"archived_snapshots\":{},\"url\":\"https://example.com\"}}},\"schema\":{\"properties\":{\"archived_snapshots\":{\"description\":\"Container for archived snapshot information\",\"properties\":{\"closest\":{\"description\":\"Information about the closest available snapshot\",\"properties\":{\"available\":{\"description\":\"Indicates whether an archived snapshot is available\",\"example\":true,\"type\":\"boolean\"},\"status\":{\"description\":\"HTTP status code of the archived snapshot\",\"example\":\"200\",\"type\":\"string\"},\"timestamp\":{\"description\":\"Timestamp of the archived snapshot in YYYYMMDDhhmmss format\",\"example\":\"20150101000000\",\"type\":\"string\"},\"url\":{\"description\":\"URL to access the archived snapshot in the Wayback Machine\",\"example\":\"http://web.archive.org/web/20150101000000/https://example.com\",\"type\":\"string\"}},\"type\":\"object\"}},\"type\":\"object\"},\"url\":{\"description\":\"The requested URL\",\"example\":\"https://example.com\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with snapshot availability information\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"example\":\"Invalid URL parameter\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Bad request - invalid parameters\"},\"503\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"example\":\"Service temporarily unavailable\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Service temporarily unavailable\"}},\"securitySource\":\"unspecified\"}", "source": "openapi3", "version": 1 }, "kind": "http", "method": "GET", "orig": "/wayback/available", "segments": [{ "lit": "wayback" }, { "lit": "available" }], "select": { "exist": ["callback", "timestamp", "url"] }, "transform": { "req": "`reqdata`", "res": "`body.archived_snapshots`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "availability", "name__orig": "availability", "Name": "Availability", "name_": "availability", "name-": "availability", "NAME": "AVAILABILITY", "index$": 0 }, { "active": true, "entity": "availability", "key$": "BasicAvailabilityFlow", "kind": "basic", "name": "BasicAvailabilityFlow", "param": {}, "step": [{ "active": true, "data": {}, "input": { "ref": "availability_ref01", "srcdatavar": "availability_ref01_data", "suffix": "_dt0" }, "match": {}, "op": "load", "spec": [], "valid": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-availability_ref01" } }], "index$": 0 }] }, 'Availability');
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -102,12 +100,6 @@ function basicSetup(extra) {
                 '`$VAL`': ['`$FORMAT`', 'upper', '`$COPY`']
             }]
     });
-    // Detect whether the user provided a real ENTID JSON via env var. The
-    // basic flow consumes synthetic IDs from the fixture file; without an
-    // override those synthetic IDs reach the live API and 4xx. Surface this
-    // to the test so it can skip rather than fail.
-    const idmapEnvVal = process.env['WAYBACK_MACHINE_TEST_AVAILABILITY_ENTID'];
-    const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{');
     const env = (0, utility_1.envOverride)({
         'WAYBACK_MACHINE_TEST_AVAILABILITY_ENTID': idmap,
         'WAYBACK_MACHINE_TEST_LIVE': 'FALSE',
@@ -115,7 +107,13 @@ function basicSetup(extra) {
     });
     idmap = env['WAYBACK_MACHINE_TEST_AVAILABILITY_ENTID'];
     const live = 'TRUE' === env.WAYBACK_MACHINE_TEST_LIVE;
+    const transport = (0, live_runner_1.createLiveTransport)();
     if (live) {
+        const rawIds = process.env['WAYBACK_MACHINE_TEST_AVAILABILITY_ENTID'];
+        idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {};
+        if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+            throw new Error('Live ENTID must be a JSON object');
+        }
         client = new __1.WaybackMachineSDK(merge([
             // FIRST, so the generated fields below win: sdk-test-control.json's
             // test.client.options adds to the live client, it does not redirect it.
@@ -126,7 +124,8 @@ function basicSetup(extra) {
             // argument at all - so a bare 'extra' silently discarded the apikey
             // and server values above and handed the SDK undefined. Harmless
             // while there was nothing in that object; not harmless now.
-            extra || {}
+            extra || {},
+            { system: { fetch: transport.fetch } }
         ]));
     }
     const setup = {
@@ -138,7 +137,7 @@ function basicSetup(extra) {
         data: entityData,
         explain: 'TRUE' === env.WAYBACK_MACHINE_TEST_EXPLAIN,
         live,
-        syntheticOnly: live && !idmapOverridden,
+        transport,
         now: Date.now(),
     };
     return setup;
