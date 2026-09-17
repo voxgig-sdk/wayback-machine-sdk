@@ -105,12 +105,12 @@ local result, err = client:Availability():load({ url = "example" })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/wayback-machine-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/wayback-machine-sdk/releases) |
-| Python | `voxgig-sdk-wayback-machine` | publish pending — [install from git tag](https://github.com/voxgig-sdk/wayback-machine-sdk/releases) |
-| PHP | `voxgig-sdk/wayback-machine` | publish pending — [install from git tag](https://github.com/voxgig-sdk/wayback-machine-sdk/releases) |
+| TypeScript | `@voxgig-sdk/wayback-machine-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/wayback-machine-sdk/tags) |
+| Python | `voxgig-sdk-wayback-machine` | publish pending — [install from git tag](https://github.com/voxgig-sdk/wayback-machine-sdk/tags) |
+| PHP | `voxgig-sdk/wayback-machine` | publish pending — [install from git tag](https://github.com/voxgig-sdk/wayback-machine-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/wayback-machine-sdk/go` | `go get github.com/voxgig-sdk/wayback-machine-sdk/go@latest` |
-| Ruby | `voxgig-sdk-wayback-machine` | publish pending — [install from git tag](https://github.com/voxgig-sdk/wayback-machine-sdk/releases) |
-| Lua | `voxgig-sdk-wayback-machine` | publish pending — [install from git tag](https://github.com/voxgig-sdk/wayback-machine-sdk/releases) |
+| Ruby | `voxgig-sdk-wayback-machine` | publish pending — [install from git tag](https://github.com/voxgig-sdk/wayback-machine-sdk/tags) |
+| Lua | `voxgig-sdk-wayback-machine` | publish pending — [install from git tag](https://github.com/voxgig-sdk/wayback-machine-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/wayback-machine-sdk/go-cli` | `go install github.com/voxgig-sdk/wayback-machine-sdk/go-cli/cmd/wayback-machine@latest` |
 | Go MCP server | `github.com/voxgig-sdk/wayback-machine-sdk/go-mcp` | `go get github.com/voxgig-sdk/wayback-machine-sdk/go-mcp@latest` |
 
