@@ -16,12 +16,6 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS: Record<string, any[]> = {
   
 }
@@ -32,7 +26,6 @@ class Config {
   makeFeature(this: any, fn: string) {
     const fc = FEATURE_CLASS[fn]
     const fi = new fc()
-    // TODO: errors etc
     return fi
   }
 
@@ -139,8 +132,9 @@ class Config {
       "fields": [
         {
           "name": "closest",
-          "short": "Information about the closest available snapshot",
-          "type": "`$OBJECT`"
+          "title": "Closest",
+          "type": "`$OBJECT`",
+          "short": "Information about the closest available snapshot"
         }
       ],
       "name": "availability",
@@ -150,32 +144,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "myCallback",
-                    "kind": "query",
-                    "name": "callback",
-                    "orig": "callback",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "20150101",
-                    "kind": "query",
-                    "name": "timestamp",
-                    "orig": "timestamp",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "https://example.com",
-                    "kind": "query",
-                    "name": "url",
-                    "orig": "url",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/wayback/available",
@@ -187,21 +155,48 @@ class Config {
                   "lit": "available"
                 }
               ],
+              "parts": [
+                "wayback",
+                "available"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body.archived_snapshots`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "callback",
+                    "orig": "callback",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "myCallback"
+                  },
+                  {
+                    "name": "timestamp",
+                    "orig": "timestamp",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "20150101"
+                  },
+                  {
+                    "name": "url",
+                    "orig": "url",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "reqd": true,
+                    "example": "https://example.com"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "callback",
                   "timestamp",
                   "url"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body.archived_snapshots`"
-              },
-              "parts": [
-                "wayback",
-                "available"
-              ]
+              }
             }
           ]
         }

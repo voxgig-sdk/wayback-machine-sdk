@@ -99,8 +99,9 @@ module WaybackMachineConfig
           "fields" => [
             {
               "name" => "closest",
-              "short" => "Information about the closest available snapshot",
+              "title" => "Closest",
               "type" => "`$OBJECT`",
+              "short" => "Information about the closest available snapshot",
             },
           ],
           "name" => "availability",
@@ -110,32 +111,6 @@ module WaybackMachineConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "query" => [
-                      {
-                        "example" => "myCallback",
-                        "kind" => "query",
-                        "name" => "callback",
-                        "orig" => "callback",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "example" => "20150101",
-                        "kind" => "query",
-                        "name" => "timestamp",
-                        "orig" => "timestamp",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "example" => "https://example.com",
-                        "kind" => "query",
-                        "name" => "url",
-                        "orig" => "url",
-                        "reqd" => true,
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/wayback/available",
@@ -147,6 +122,41 @@ module WaybackMachineConfig
                       "lit" => "available",
                     },
                   ],
+                  "parts" => [
+                    "wayback",
+                    "available",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body.archived_snapshots`",
+                  },
+                  "args" => {
+                    "query" => [
+                      {
+                        "name" => "callback",
+                        "orig" => "callback",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "example" => "myCallback",
+                      },
+                      {
+                        "name" => "timestamp",
+                        "orig" => "timestamp",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "example" => "20150101",
+                      },
+                      {
+                        "name" => "url",
+                        "orig" => "url",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "reqd" => true,
+                        "example" => "https://example.com",
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "callback",
@@ -154,14 +164,6 @@ module WaybackMachineConfig
                       "url",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body.archived_snapshots`",
-                  },
-                  "parts" => [
-                    "wayback",
-                    "available",
-                  ],
                 },
               ],
             },

@@ -91,8 +91,9 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "closest",
-						"short": "Information about the closest available snapshot",
+						"title": "Closest",
 						"type": "`$OBJECT`",
+						"short": "Information about the closest available snapshot",
 					},
 				},
 				"name": "availability",
@@ -102,32 +103,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "myCallback",
-											"kind": "query",
-											"name": "callback",
-											"orig": "callback",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "20150101",
-											"kind": "query",
-											"name": "timestamp",
-											"orig": "timestamp",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "https://example.com",
-											"kind": "query",
-											"name": "url",
-											"orig": "url",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/wayback/available",
@@ -139,20 +114,47 @@ func MakeConfig() map[string]any {
 										"lit": "available",
 									},
 								},
+								"parts": []any{
+									"wayback",
+									"available",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body.archived_snapshots`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "callback",
+											"orig": "callback",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "myCallback",
+										},
+										map[string]any{
+											"name": "timestamp",
+											"orig": "timestamp",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "20150101",
+										},
+										map[string]any{
+											"name": "url",
+											"orig": "url",
+											"type": "`$STRING`",
+											"kind": "query",
+											"reqd": true,
+											"example": "https://example.com",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"callback",
 										"timestamp",
 										"url",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body.archived_snapshots`",
-								},
-								"parts": []any{
-									"wayback",
-									"available",
 								},
 							},
 						},

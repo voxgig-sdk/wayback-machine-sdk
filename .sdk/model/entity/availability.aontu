@@ -1,0 +1,84 @@
+# Entity: availability
+
+main: kit: entity: availability: {
+
+  alias: field: {}
+
+  fields: {
+    closest: {
+      h: "Closest"
+      n: "closest"
+      r: false
+      sh: "Information about the closest available snapshot"
+      t: "`$OBJECT`"
+    }
+  }
+
+  name: "availability"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /wayback/available"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "myCallback"
+                k: "query"
+                n: "callback"
+                or: "callback"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "20150101"
+                k: "query"
+                n: "timestamp"
+                or: "timestamp"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "https://example.com"
+                k: "query"
+                n: "url"
+                or: "url"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/wayback/available"
+          q: {
+            exist: [
+              "callback"
+              "timestamp"
+              "url"
+            ]
+          }
+          s: [
+            {
+              lit: "wayback"
+            }
+            {
+              lit: "available"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.archived_snapshots`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}
